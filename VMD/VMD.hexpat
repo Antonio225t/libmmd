@@ -1,5 +1,6 @@
 #pragma author Antonio225
 #pragma description VMD Vocaloid Motion Data (.vmd)
+#pragma pattern_limit 0xFFFFFF
 
 #include <std/io.pat>
 #include <std/string.pat>
@@ -9,7 +10,7 @@
 
 fn IsVersionNew() {
     std::string::NullString ActualMagic @ 0x00;
-    
+
     if (ActualMagic == "Vocaloid Motion Data 0002") {
         return true;
     }
@@ -33,7 +34,7 @@ struct Position {
 struct InterpolationSection {
     s8 InterStart_X;
     s8 InterEnd_X;
-    
+
     s8 InterStart_Y;
     s8 InterEnd_Y;
 };
@@ -157,7 +158,7 @@ struct CameraCurve {
     InterpolationSection InterSection_X;
     InterpolationSection InterSection_Y;
     InterpolationSection InterSection_Z;
-    
+
     InterpolationSection InterSection_Rotation;
     InterpolationSection InterSection_Distance;
     InterpolationSection InterSection_ViewAngle; // FOV
@@ -223,7 +224,7 @@ struct IKBone {
 struct DispIKKeyframe {
     u32 Frame;
     bool Disp;
-    
+
     u32 IKBonesCount;
     IKBone IKBonesList[IKBonesCount];
 };
@@ -233,30 +234,30 @@ struct DispIKKeyframe {
 struct VMD {
     char Magic[30];
     u8 ModelName_SJIS[IsVersionNew() ? 20 : 10];
-    
+
     // Bones
     u32 BoneKeyframeCount;
     BoneKeyframe BoneList[BoneKeyframeCount];
-    
+
     // Morphs
     u32 MorphKeyframeCount;
     MorphKeyframe MorphList[MorphKeyframeCount];
-    
-    
-    
+
+
+
     // Cameras
     u32 CameraKeyframeCount;
     CameraKeyframe CameraList[CameraKeyframeCount];
-    
+
     // Lights
     u32 LightKeyframeCount;
     LightKeyframe LightList[LightKeyframeCount];
-    
-    
+
+
     // Shadows
     u32 ShadowKeyframeCount;
     ShadowKeyframe ShadowList[ShadowKeyframeCount];
-    
+
     // Disp/IK
     u32 DispIKKeyframeCount;
     DispIKKeyframe DispIKList[DispIKKeyframeCount];

@@ -6,4 +6,4 @@ File formats with documentations
 
 | File name | Documentation | Hexpat |
 | :---: | :---: | :---: |
-| VMD | here | VMD.hexpat |
+| VMD | [here](https://github.com/Antonio225t/libmmd/wiki/VMD) | [VMD.hexpat](https://github.com/Antonio225t/libmmd/blob/main/VMD/VMD.hexpat) |
